@@ -1,1 +1,35 @@
-<p>reports works!</p>
+<mat-card class="wrapper">
+  <mat-card-title class="wrapper__title">Raport</mat-card-title>
+  <mat-card-content class="wrapper__content">
+    <div class="filter-menu" fxFlex="30%" fxLayout="column" fxLayoutAlign="start center">
+      <mat-form-field class="filter-menu__select">
+        <mat-select placeholder="Lokal:"></mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter-menu__select">
+        <mat-select placeholder="Od:"></mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter-menu__select">
+        <mat-select placeholder="Do:"></mat-select>
+      </mat-form-field>
+      <div fxFlex></div>
+
+      <div class="filter-menu__button-div">
+        <button class="filter-menu__button" mat-stroked-button>Zatwierdź</button>
+      </div>
+    </div>
+
+    <div fxFlex="70%" class="data-table">
+      <mat-table>
+        <ng-container *ngFor="let column of reportColumns" matColumnDef="{{column.id}}">
+          <mat-header-cell class="data-table__header-cell" *matHeaderCellDef>{{column.name}}</mat-header-cell>
+          <mat-cell *matCellDef="let column">x</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="reportColumnsNames"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: reportColumnsNames"></mat-row>
+      </mat-table>
+    </div>
+  </mat-card-content>
+
+</mat-card>
